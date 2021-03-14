@@ -1,20 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthQuery} from '../store/auth.query';
-import {Observable} from 'rxjs';
 import {AuthService} from '../auth.service';
-import {tap} from 'rxjs/operators';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'ff-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'ff-forgot-password',
+  templateUrl: './forgot-password.component.html',
+  styleUrls: ['./forgot-password.component.css']
 })
-export class LoginComponent implements OnInit {
+export class ForgotPasswordComponent implements OnInit {
 
   validateForm!: FormGroup;
-  error: string;
 
   constructor(private fb: FormBuilder,
               private authQuery: AuthQuery,
@@ -25,7 +22,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       username: [null, [Validators.required]],
-      password: [null, [Validators.required]],
     });
   }
 
@@ -34,18 +30,12 @@ export class LoginComponent implements OnInit {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
-    this.authService.login(this.validateForm.value)
-      .then((e)  => {
-        if (e.error) {
-          if(e.message === 'Password is expired'){
-            this.router.navigateByUrl('/reset-password', { state: { message: e.message } });
-          }
-          this.error = e.message;
-        } else {
+    this.authService.forgotPassword(this.validateForm.value)
+      .then(e => {
+        if (e) {
           this.router.navigate(['/']);
         }
       });
 
   }
-
 }
