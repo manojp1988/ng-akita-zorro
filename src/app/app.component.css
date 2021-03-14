@@ -30,7 +30,7 @@ nz-breadcrumb {
 
 .inner-content {
   padding: 0 24px;
-  min-height: 280px;
+  /*min-height: 280px;*/
 }
 
 nz-footer {
@@ -40,4 +40,9 @@ nz-footer {
 .logout-btn {
   position: absolute;
   right: 10px;
+}
+
+.main-layout {
+  height: 100%;
+  background-color: aqua;
 }
