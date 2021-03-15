@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HomeService} from './home.service';
+import {HomeQuery} from './store/home.query';
 
 @Component({
   selector: 'ff-home',
@@ -8,10 +9,19 @@ import {HomeService} from './home.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private service: HomeService) { }
+  id$ = this.query.id$;
+
+  number = 0;
+
+  constructor(private service: HomeService,
+              private query: HomeQuery) { }
 
   ngOnInit(): void {
     this.service.getMoviesList();
   }
 
+  increment() {
+    this.number += 1;
+    this.service.increment();
+  }
 }

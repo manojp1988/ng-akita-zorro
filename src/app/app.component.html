@@ -6,11 +6,12 @@
       <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
         <li nz-menu-item nzMatchRouter [routerLink]="'/home'">Home</li>
         <li nz-menu-item nzMatchRouter [routerLink]="'/user'">User</li>
+        <li nz-menu-item nzMatchRouter [routerLink]="'/reports'">Reports</li>
         <li nz-menu-item class="logout-btn" (click)="logout()">Logout <i nz-icon nzType="logout" nzTheme="outline"></i>
         </li>
       </ul>
     </nz-header>
-    <nz-layout>
+    <nz-layout class="body-layout">
       <nz-sider nzWidth="200px" nzTheme="light">
         <ul nz-menu nzMode="inline" class="sider-menu">
           <li nz-submenu nzOpen nzIcon="user" nzTitle="subnav 1">

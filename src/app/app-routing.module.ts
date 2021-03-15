@@ -3,7 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from './auth/login/login.component';
 import {UserComponent} from './user/user.component';
 import {HomeComponent} from './home/home.component';
-import {AuthenticationGuard} from './guards/authentication-guard';
+import {AuthenticationGuard} from './auth/guards/authentication-guard';
 import {ForgotPasswordComponent} from './auth/forgot-password/forgot-password.component';
 import {ResetPasswordComponent} from './auth/reset-password/reset-password.component';
 
@@ -28,6 +28,11 @@ const appRoutes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    canActivate: [AuthenticationGuard]
+  },
+  {
+    path: 'reports',
+    loadChildren: () => import('./report/reports.module').then(m => m.ReportsModule),
     canActivate: [AuthenticationGuard]
   },
   {

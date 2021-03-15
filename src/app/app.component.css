@@ -30,7 +30,6 @@ nz-breadcrumb {
 
 .inner-content {
   padding: 0 24px;
-  /*min-height: 280px;*/
 }
 
 nz-footer {
@@ -45,4 +44,8 @@ nz-footer {
 .main-layout {
   height: 100%;
   background-color: aqua;
+}
+
+.body-layout {
+  overflow: auto;
 }
