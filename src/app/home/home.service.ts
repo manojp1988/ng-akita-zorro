@@ -1,23 +1,30 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {API} from '../shared/util/constant';
-import {HomeStore} from './store/home.store';
+import {MovieStore} from './store/movie.store';
+import {tap} from 'rxjs/operators';
+import {Movie} from './store/movie';
+import {applyTransaction, cacheable} from '@datorama/akita';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HomeService {
 
-  constructor(private http: HttpClient, private store: HomeStore) { }
-
-  async getMoviesList() {
-   const moviesList = await this.http.get(`${API}/movies`).toPromise();
-   console.log(moviesList);
+  constructor(private http: HttpClient, private store: MovieStore) {
   }
 
-  increment() {
-    this.store.update(state => (
-      {id: (state.id + 1)}
-    ))
+  getMoviesList() {
+    this.store.setLoading(true);
+    const request$ = this.http.get<Movie[]>(`${API}/movies`).pipe(
+      tap(movies => {
+        applyTransaction(() => {
+          this.store.setLoading(false);
+          this.store.set(movies);
+        });
+      })
+    );
+    return cacheable(this.store, request$);
   }
+
 }

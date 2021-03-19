@@ -8,12 +8,13 @@ import {ReportsQuery} from '../../store/reports.query';
   styleUrls: ['./reports.component.css']
 })
 export class ReportsComponent implements OnInit {
- id$ = this.query.id$;
+  id$ = this.query.id$;
 
   number = 0;
 
   constructor(private service: ReportsService,
-              private query: ReportsQuery) { }
+              private query: ReportsQuery) {
+  }
 
   ngOnInit(): void {
   }

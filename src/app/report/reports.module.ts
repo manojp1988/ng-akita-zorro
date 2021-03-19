@@ -19,4 +19,5 @@ import {ReportsQuery} from './store/reports.query';
     ReportsQuery
   ]
 })
-export class ReportsModule { }
+export class ReportsModule {
+}

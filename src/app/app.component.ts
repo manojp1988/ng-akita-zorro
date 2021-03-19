@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthQuery} from './auth/store/auth.query';
-import {tap} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {AuthService} from './auth/auth.service';
 
@@ -15,14 +14,15 @@ export class AppComponent implements OnInit {
 
   constructor(private query: AuthQuery,
               private router: Router,
-              private authService: AuthService) {}
+              private authService: AuthService) {
+  }
 
   ngOnInit(): void {
   }
 
   logout() {
     this.authService.logout().then(e => {
-      if(!this.query.isLoggedIn) {
+      if (!this.query.isLoggedIn) {
         this.router.navigate(['/login']);
       }
     });

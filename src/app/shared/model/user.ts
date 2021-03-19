@@ -1,4 +1,3 @@
-
 export interface User {
   id: number;
   email: string;
@@ -6,4 +5,10 @@ export interface User {
   name: string;
   authorities: string[];
   token: string;
+}
+
+
+export interface Credentials {
+  token?: string;
+  username?: string;
 }

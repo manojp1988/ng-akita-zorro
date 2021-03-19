@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'ff-reset-password',
@@ -23,6 +22,6 @@ export class ResetPasswordComponent implements OnInit {
       password: [null, [Validators.required]],
     });
 
-   this.message = window.history.state?.message;
+    this.message = window.history.state?.message;
   }
 }

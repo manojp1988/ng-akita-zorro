@@ -16,9 +16,9 @@
         <ul nz-menu nzMode="inline" class="sider-menu">
           <li nz-submenu nzOpen nzIcon="user" nzTitle="subnav 1">
             <ul>
-              <li nz-menu-item nzMatchRouter [routerLink]="'/home'">option1</li>
-              <li nz-menu-item nzMatchRouter [routerLink]="'/user'">option2</li>
-              <li nz-menu-item>option3</li>
+              <li nz-menu-item nzMatchRouter [routerLink]="'/home'">Home</li>
+              <li nz-menu-item nzMatchRouter [routerLink]="'/user'">User</li>
+              <li nz-menu-item nzMatchRouter [routerLink]="'/reports'">Reports</li>
               <li nz-menu-item>option4</li>
             </ul>
           </li>
@@ -41,7 +41,9 @@
         </ul>
       </nz-sider>
       <nz-layout class="inner-layout">
-        <nz-content><router-outlet></router-outlet></nz-content>
+        <nz-content>
+          <router-outlet></router-outlet>
+        </nz-content>
       </nz-layout>
     </nz-layout>
     <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer>

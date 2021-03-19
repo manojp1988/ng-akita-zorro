@@ -12,7 +12,7 @@ export function createInitialState(): ReportsState {
 }
 
 @Injectable()
-@StoreConfig({ name: 'reports' })
+@StoreConfig({name: 'reports'})
 export class ReportsStore extends Store<ReportsState> {
 
   constructor() {

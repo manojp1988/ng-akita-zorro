@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthQuery} from '../store/auth.query';
-import {Observable} from 'rxjs';
 import {AuthService} from '../auth.service';
-import {tap} from 'rxjs/operators';
 import {Router} from '@angular/router';
 
 @Component({
@@ -35,10 +33,10 @@ export class LoginComponent implements OnInit {
       this.validateForm.controls[i].updateValueAndValidity();
     }
     this.authService.login(this.validateForm.value)
-      .then((e)  => {
+      .then((e) => {
         if (e.error) {
-          if(e.message === 'Password is expired'){
-            this.router.navigateByUrl('/reset-password', { state: { message: e.message } });
+          if (e.message === 'Password is expired') {
+            this.router.navigateByUrl('/reset-password', {state: {message: e.message}});
           }
           this.error = e.message;
         } else {

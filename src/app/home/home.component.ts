@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HomeService} from './home.service';
-import {HomeQuery} from './store/home.query';
+import {MovieQuery} from './store/movie.query';
 
 @Component({
   selector: 'ff-home',
@@ -9,19 +9,20 @@ import {HomeQuery} from './store/home.query';
 })
 export class HomeComponent implements OnInit {
 
-  id$ = this.query.id$;
+  data$ = this.query.selectAll();
 
   number = 0;
 
   constructor(private service: HomeService,
-              private query: HomeQuery) { }
+              private query: MovieQuery) {
+  }
 
   ngOnInit(): void {
-    this.service.getMoviesList();
+    this.service.getMoviesList().subscribe({
+      error: err => {
+        console.error(err);
+      }
+    });
   }
 
-  increment() {
-    this.number += 1;
-    this.service.increment();
-  }
 }
